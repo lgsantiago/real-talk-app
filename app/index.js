@@ -1,4 +1,12 @@
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  Pressable,
+} from "react-native";
+import { Link } from "expo-router";
 
 const houses = [
   {
@@ -44,11 +52,31 @@ const AppHeader = () => (
 export default function Houses() {
   const renderHouse = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.image} style={styles.image} />
+      <Link
+        href={{
+          pathname: "SingleHouseScreen",
+          params: { price: item.price, description: item.description, image:item.image },
+        }}
+        asChild
+      >
+        <Pressable>
+          {() => <Image source={item.image} style={styles.image} />}
+        </Pressable>
+      </Link>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.price}>{item.price}</Text>
     </View>
   );
+
+  // const HouseCard = ({ item }) => (
+  //   <View style={styles.card}>
+  //     <Image source={item.image} style={styles.image} />
+  //     <Text style={styles.description}>{item.description}</Text>
+  //     <Text style={styles.price}>{item.price}</Text>
+  //   </View>
+  // );
+
+  //const renderHouse = ({ item }) => <HouseCard item={item} />;
 
   return (
     <View style={styles.container}>
