@@ -37,7 +37,7 @@ const SingleHouseScreen = () => {
 
   return (
     <View style={styles.container}>
-      <BackButton onPress={back}/>
+      <BackButton onPress={back} />
       <Image source={require("../images/house4.jpg")} style={styles.image} />
       <Text style={styles.price}>{price}</Text>
       <Text style={styles.description}>{description}</Text>
